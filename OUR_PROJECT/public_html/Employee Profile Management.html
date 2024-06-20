@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+     	<title>Employee Profile Management</title>
+	<link rel="stylesheet" href="style.css">
+        <style>
+         /* Employee Profile Management Styles */
+
+#add-employee-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#add-employee-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#add-employee-form input[type="text"], input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+#add-employee-form button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#employee-table {
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+#employee-table th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#employee-table th {
+  background-color: #f0f0f0;
+}
+#employee-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#employee-list tr {
+  border-bottom: 1px solid #ccc;
+}
+
+#employee-list tr:hover {
+  background-color: #f0f0f0;
+}
+
+.edit-button, .delete-button {
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #333;
+  color: #fff;
+}
+.delete-button {
+  background-color: #red;
+  color: #fff;
+}
+navigation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #3e8e41;
+}
+
+.page-container {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+}
+
+.page:not(.active) {
+  opacity: 0;
+}
+
+.active {
+  opacity: 1;
+}
+   
+        </style>
+        <script>
+    const form = document.getElementById('add-employee-form');
+const employeeTable = document.getElementById('employee-table');
+const employeeList = document.getElementById('employee-list');
+
+form.addEventListener('submit', (e) => {
+	e.preventDefault();
+	const name = document.getElementById('name').value;
+	const email = document.getElementById('email').value;
+	const department = document.getElementById('department').value;
+	const position = document.getElementById('position').value;
+	
+	const employeeProfile = {
+		name,
+		email,
+		department,
+		position
+	};
+	
+	addEmployeeToTable(employeeProfile);
+});
+  
+function addEmployeeToTable(employeeProfile) {
+	const tableRow = document.createElement('tr');
+	tableRow.innerHTML = `
+		<td>${employeeProfile.name}</td>
+		<td>${employeeProfile.email}</td>
+		<td>${employeeProfile.department}</td>
+		<td>${employeeProfile.position}</td>
+		<td>
+			<button class="edit-button">Edit</button>
+			<button class="delete-button">Delete</button>
+		</td>
+	`;
+	employeeList.appendChild(tableRow);
+}
+
+// Add event listeners for edit and delete buttons
+employeeTable.addEventListener('click', (e) => {
+ 	if (e.target.classList.contains('edit-button')) {
+		// Edit employee profile logic
+	} else if (e.target.classList.contains('delete-button')) {
+		// Delete employee profile logic
+	}
+});
+ const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const pages = document.querySelectorAll('.page');
+
+let currentPage = 0;
+
+prevBtn.addEventListener('click', () => {
+  currentPage--;
+  updatePage();
+});
+
+nextBtn.addEventListener('click', () => {
+  currentPage++;
+  updatePage();
+});
+
+function updatePage() {
+  pages.forEach((page, index) => {
+    if (index === currentPage) {
+      page.classList.add('active');
+    } else {
+      page.classList.remove('active');
+    }
+  });
+}    
+        </script>
+</head>
+<body>
+         <div class="navigation">
+                   <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile.html">Employee Profiles</a></button>
+  <button class="next-btn"><a href="Personal information.html">Personal information</a></button>
+   <button class="next-btn"><a href="Professional information.html">Professional information</a></button>
+  <button class="next-btn"><a href="Education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts.html">Shifts</a></button>
+    <button class="next-btn"><a href="Leaves.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payrolls.html">Payslips</a></button>
+      <button class="next-btn"><a href="Attendance.html">Attendance</a></button>
+   <button class="next-btn"><a href="Dat sharing.html">Data Sharing</a></button>
+     <button class="next-btn"><a href="Security.html">Security</a></button>
+</div>
+
+<div class="page-container">
+  <div class="page" id="leaves.hml">Page 1</div>
+  <div class="page" id="payslips.html">Page 2</div>
+  <div class="page" id="shifts.html">Page 3</div>
+</div>
+	<h1>Employee Profile Management</h1>
+	<form id="add-employee-form">
+		<label for="name">Name:</label>
+		<input type="text" id="name" name="name"><br><br>
+		<label for="email">Email:</label>
+		<input type="email" id="email" name="email"><br><br>
+		<label for="department">Department:</label>
+		<input type="text" id="department" name="department"><br><br>
+		<label for="position">Position:</label>
+		<input type="text" id="position" name="position"><br><br>
+		<button type="submit">Add Employee</button>
+	</form>
+       <table id="employee-table">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Email</th>
+				<th>Department</th>
+				<th>Position</th>
+				<th>Actions</th>
+			</tr>
+		</thead>
+		<tbody id="employee-list">
+		</tbody>
+	</table>
+	
+	<script src="script.js"></script>
+ 
+      
+    </body>
+</html>

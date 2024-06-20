@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+                   .employee-profile {
+  width: 50%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+  
+ button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}  
+body {
+  background-image: url('background image1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+        </style>
+        <script>
+     const dataSharingForm = document.getElementById('data-sharing-form');
+const dataRetentionForm = document.getElementById('data-retention-form');
+
+dataSharingForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const dataToShare = document.getElementById('data-to-share').value;
+  const shareWith = document.getElementById('share-with').value;
+  
+  // Data sharing logic goes here
+});
+
+dataRetentionForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const dataToRetain = document.getElementById('data-to-retain').value;
+  const retentionPeriod = document.getElementById('retention-period').value;
+  
+  // Data retention logic goes here
+});
+       
+        </script>
+    </head>
+    <body>
+              <div class="navigation">
+         
+    
+                         <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile 2.html">Employee Profile</a></button>
+   <button class="next-btn"><a href="Personal information 2.html">Personal information</a></button>
+    <button class="next-btn"><a href="Professional information 2.html">Professional information</a></button>
+    <button class="next-btn"><a href="Employer education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts 2.html">Shifts</a></button>
+    <button class="next-btn"><a href="Attendance2.html">Attendance</a></button>
+    <button class="next-btn"><a href="Leaves 2.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payroll employer.html">Payslips</a></button>
+   <button class="next-btn"><a href="Dat sharing 2.html">Data Sharing</a></button>
+     <button class="next-btn"><a href="Security 2.html">Security</a></button>
+
+</div>
+<div id="data-sharing">
+  <h2>Data Sharing</h2>
+  <form id="data-sharing-form">
+    <label for="data-to-share">Data to Share:</label>
+    <input type="text" id="data-to-share" name="data-to-share"><br><br>
+    <label for="share-with">Share With:</label>
+    <input type="text" id="share-with" name="share-with"><br><br>
+    <button id="share-data-btn">Share Data</button>
+  </form>
+  <div id="data-retention">
+    <h2>Data Retention</h2>
+    <form id="data-retention-form">
+      <label for="data-to-retain">Data to Retain:</label>
+      <input type="text" id="data-to-retain" name="data-to-retain"><br><br>
+      <label for="retention-period">Retention Period:</label>
+      <input type="text" id="retention-period" name="retention-period"><br><br>
+      <button id="retain-data-btn">Retain Data</button>
+    </form>
+  </div>
+</div>
+
+    </body>
+</html>

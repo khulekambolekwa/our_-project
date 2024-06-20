@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+            
+          .attendance-report {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#attendance-report-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#attendance-report-table th, #attendance-report-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#attendance-report-table th {
+  background-color: #f0f0f0;
+}
+
+#attendance-report-table-body tr:hover {
+  background-color: #ccc;
+}
+ CSS:
+
+.attendance-calendar {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#attendance-calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#attendance-calendar-table th, #attendance-calendar-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#attendance-calendar-table th {
+  background-color: #f0f0f0;
+}
+
+#attendance-calendar-table-body tr:hover {
+  background-color: #ccc;
+}
+ .clock-in-history {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#clock-in-history-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#clock-in-history-table th, #clock-in-history-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#clock-in-history-table th {
+  background-color: #f0f0f0;
+}
+
+#clock-in-history-table-body tr:hover {
+  background-color: #ccc;
+}
+
+.time-tracking {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#time-tracking-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#time-tracking-form label {
+  margin-bottom: 10px;
+}
+
+#time-tracking-form input[type="text"], #time-tracking-form input[type="time"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+#time-tracking-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#time-tracking-table th, #time-tracking-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#time-tracking-table th {
+  background-color: #f0f0f0;
+}
+
+#time-tracking-table-body tr:hover {
+  background-color: #ccc;
+}
+.break-history {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#break-history-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#break-history-table th, #break-history-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#break-history-table th {
+  background-color: #f0f0f0;
+}
+
+#break-history-table-body tr:hover {
+  background-color: #ccc;
+}
+.overtime-tracking {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#overtime-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#overtime-form label {
+  margin-bottom: 10px;
+}
+
+#overtime-form input[type="text"], #overtime-form input[type="date"], #overtime-form input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+#overtime-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#overtime-table th, #overtime-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#overtime-table th {
+  background-color: #f0f0f0;
+}
+
+#overtime-table-body tr:hover {
+  background-color: #ccc;
+}
+.approval-workflow {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#approval-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#approval-form label {
+  margin-bottom: 10px;
+}
+
+#approval-form input[type="text"], #approval-form input[type="date"], #approval-form select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+#approval-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#approval-table th, #approval-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#approval-table th {
+  background-color: #f0f0f0;
+}
+
+#approval-table-body tr:hover {
+  background-color: #ccc;
+}
+  .prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+        </style>
+        <script>
+       const attendanceReportTableBody = document.getElementById('attendance-report-table-body');
+
+// Fetch attendance report data from server
+fetch('/attendance-report-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(attendanceReport => {
+      const attendanceReportHTML = `
+        <tr>
+          <td>${attendanceReport.employeeName}</td>
+          <td>${attendanceReport.attendanceDate}</td>
+          <td>${attendanceReport.attendanceStatus}</td>
+        </tr>
+      `;
+      attendanceReportTableBody.innerHTML += attendanceReportHTML;
+    });
+  });
+ 
+const attendanceCalendarTableBody = document.getElementById('attendance-calendar-table-body');
+
+// Fetch attendance calendar data from server
+fetch('/attendance-calendar-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(attendanceCalendar => {
+      const attendanceCalendarHTML = `
+        <tr>
+          <td>${attendanceCalendar.date}</td>
+          <td>${attendanceCalendar.employeeName}</td>
+          <td>${attendanceCalendar.attendanceStatus}</td>
+        </tr>
+      `;
+      attendanceCalendarTableBody.innerHTML += attendanceCalendarHTML;
+    });
+  });
+  const clockInHistoryTableBody = document.getElementById('clock-in-history-table-body');
+
+// Fetch clock in history data from server
+fetch('/clock-in-history-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(clockInHistory => {
+      const clockInHistoryHTML = `
+        <tr>
+          <td>${clockInHistory.date}</td>
+          <td>${clockInHistory.employeeName}</td>
+          <td>${clockInHistory.clockInTime}</td>
+          <td>${clockInHistory.clockOutTime}</td>
+        </tr>
+      `;
+      clockInHistoryTableBody.innerHTML += clockInHistoryHTML;
+    });
+  });
+  const timeTrackingForm = document.getElementById('time-tracking-form');
+const timeTrackingTableBody = document.getElementById('time-tracking-table-body');
+
+timeTrackingForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const employeeName = document.getElementById('employee-name').value;
+  const startTime = document.getElementById('start-time').value;
+  const endTime = document.getElementById('end-time').value;
+  const totalHours = calculateTotalHours(startTime, endTime);
+  const timeTrackingData = {
+    employeeName,
+    startTime,
+    endTime,
+    totalHours
+  };
+  fetch('/time-tracking-data', {
+    method: 'POST',
+    headers: {
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(timeTrackingData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    const timeTrackingHTML = `
+      <tr>
+        <td>${data.employeeName}</td>
+        <td>${data.startTime}</td>
+        <td>${data.endTime}</td>
+        <td>${data.totalHours}</td>
+      </tr>
+    `;
+    timeTrackingTableBody.innerHTML += timeTrackingHTML;
+  });
+});
+
+function calculateTotalHours(startTime, endTime) {
+  const startHours = parseInt(startTime.split(':')[0]);
+  const startMinutes = parseInt(startTime.split(':')[1]);
+  const endHours = parseInt(endTime.split(':')[0]);
+  const endMinutes = parseInt(endTime.split(':')[1]);
+    const totalHours = endHours - startHours + (endMinutes - startMinutes) / 60;
+  return totalHours.toFixed(2);
+}
+const breakHistoryTableBody = document.getElementById('break-history-table-body');
+
+// Fetch break history data from server
+fetch('/break-history-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(breakHistory => {
+      const breakHistoryHTML = `
+        <tr>
+          <td>${breakHistory.employeeName}</td>
+          <td>${breakHistory.breakDate}</td>
+          <td>${breakHistory.breakStartTime}</td>
+          <td>${breakHistory.breakEndTime}</td>
+          <td>${breakHistory.breakDuration}</td>
+        </tr>
+      `;
+      breakHistoryTableBody.innerHTML += breakHistoryHTML;
+    });
+  });
+const overtimeForm = document.getElementById('overtime-form');
+const overtimeTableBody = document.getElementById('overtime-table-body');
+
+overtimeForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const employeeName = document.getElementById('employee-name').value;
+  const overtimeDate = document.getElementById('overtime-date').value;
+  const overtimeHours = document.getElementById('overtime-hours').value;
+  const totalOvertime = calculateTotalOvertime(overtimeHours);
+  const overtimeData = {
+    employeeName,
+    overtimeDate,
+    overtimeHours,
+    totalOvertime
+  };
+  fetch('/overtime-data', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(overtimeData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    const overtimeHTML = `
+      <tr>
+        <td>${data.employeeName}</td>
+        <td>${data.overtimeDate}</td>
+        <td>${data.overtimeHours}</td>
+        <td>${data.totalOvertime}</td>
+      </tr>
+    `;
+    overtimeTableBody.innerHTML += overtimeHTML;
+  });
+});
+
+function calculateTotalOvertime(overtimeHours) {
+  const totalOvertime = overtimeHours + parseInt(overtimeHours * 0.5);
+  return totalOvertime.toFixed(2);
+}
+
+
+const approvalForm = document.getElementById('approval-form');
+const approvalTableBody = document.getElementById('approval-table-body');
+
+approvalForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const employeeName = document.getElementById('employee-name').value;
+  const requestType = document.getElementById('request-type').value;
+  const startDate = document.getElementById('start-date').value;
+  const endDate = document.getElementById('end-date').value;
+  const approvalStatus = 'Pending';
+  const approvalData = {
+    employeeName,
+    requestType,
+    startDate,
+    endDate,
+    approvalStatus
+  };
+  fetch('/approval-data', {
+    method: 'POST',
+      headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(approvalData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    const approvalHTML = `
+      <tr>
+        <td>${data.employeeName}</td>
+        <td>${data.requestType}</td>
+        <td>${data.startDate}</td>
+        <td>${data.endDate}</td>
+        <td>${data.approvalStatus}</td>
+      </tr>
+    `;
+    approvalTableBody.innerHTML += approvalHTML;
+  });
+});
+
+            </script>
+    </head>
+    <body>
+                         <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile.html">Employee Profile</a></button>
+   <button class="next-btn"><a href="Personal information 2.html">Personal information</a></button>
+    <button class="next-btn"><a href="Professional information 2.html">Professional information</a></button>
+    <button class="next-btn"><a href="Employee education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts 2.html">Shifts</a></button>
+    <button class="next-btn"><a href="Attendance2.html">Attendance</a></button>
+    <button class="next-btn"><a href="Leaves 2.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payroll employer.html">Payslips</a></button>
+   <button class="next-btn"><a href="Dat sharing 2.html">Data Sharing</a></button>
+     <button class="next-btn"><a href="Security 2.html">Security</a></button>
+
+            
+            <div class="attendance-report">
+  <h2>Attendance Report</h2>
+  <table id="attendance-report-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Attendance Date</th>
+        <th>Attendance Status</th>
+      </tr>
+    </thead>
+    <tbody id="attendance-report-table-body">
+      <!-- Attendance report data -->
+    </tbody>
+  </table>
+</div>
+
+<div class="attendance-calendar">
+  <h2>Attendance Calendar</h2>
+  <table id="attendance-calendar-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Employee Name</th>
+        <th>Attendance Status</th>
+      </tr>
+    </thead>
+    <tbody id="attendance-calendar-table-body">
+      <!-- Attendance calendar data -->
+    </tbody>
+  </table>
+</div>
+<div class="clock-in-history">
+  <h2>Clock In History</h2>
+  <table id="clock-in-history-table">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Employee Name</th>
+        <th>Clock In Time</th>
+        <th>Clock Out Time</th>
+      </tr>
+    </thead>
+    <tbody id="clock-in-history-table-body">
+      <!-- Clock in history data -->
+    </tbody>
+  </table>
+</div>
+<div class="time-tracking">
+  <h2>Time Tracking</h2>
+  <form id="time-tracking-form">
+    <label for="employee-name">Employee Name:</label>
+    <input type="text" id="employee-name" name="employee-name"><br><br>
+    <label for="start-time">Start Time:</label>
+    <input type="time" id="start-time" name="start-time"><br><br>
+    <label for="end-time">End Time:</label>
+    <input type="time" id="end-time" name="end-time"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <table id="time-tracking-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Total Hours</th>
+      </tr>
+    </thead>
+    <tbody id="time-tracking-table-body">
+      <!-- Time tracking data -->
+    </tbody>
+  </table>
+<div class="time-tracking">
+  <h2>Time Tracking</h2>
+  <form id="time-tracking-form">
+    <label for="employee-name">Employee Name:</label>
+    <input type="text" id="employee-name" name="employee-name"><br><br>
+    <label for="start-time">Start Time:</label>
+    <input type="time" id="start-time" name="start-time"><br><br>
+    <label for="end-time">End Time:</label>
+    <input type="time" id="end-time" name="end-time"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <table id="time-tracking-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Start Time</th>
+        <th>End Time</th>
+        <th>Total Hours</th>
+      </tr>
+    </thead>
+    <tbody id="time-tracking-table-body">
+      <!-- Time tracking data -->
+    </tbody>
+  </table>
+<div class="break-history">
+  <h2>Break History</h2>
+  <table id="break-history-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Break Date</th>
+        <th>Break Start Time</th>
+        <th>Break End Time</th>
+        <th>Break Duration</th>
+      </tr>
+    </thead>
+    <tbody id="break-history-table-body">
+      <!-- Break history data -->
+    </tbody>
+  </table>
+</div>
+
+
+<div class="overtime-tracking">
+  <h2>Overtime Tracking</h2>
+  <form id="overtime-form">
+    <label for="employee-name">Employee Name:</label>
+    <input type="text" id="employee-name" name="employee-name"><br><br>
+    <label for="overtime-date">Overtime Date:</label>
+    <input type="date" id="overtime-date" name="overtime-date"><br><br>
+    <label for="overtime-hours">Overtime Hours:</label>
+    <input type="number" id="overtime-hours" name="overtime-hours"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <table id="overtime-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Overtime Date</th>
+        <th>Overtime Hours</th>
+        <th>Total Overtime</th>
+      </tr>
+    </thead>
+    <tbody id="overtime-table-body">
+      <!-- Overtime data -->
+    </tbody>
+  </table>
+</div>
+
+<div class="approval-workflow">
+  <h2>Approval Workflow</h2>
+  <form id="approval-form">
+    <label for="employee-name">Employee Name:</label>
+    <input type="text" id="employee-name" name="employee-name"><br><br>
+    <label for="request-type">Request Type:</label>
+    <select id="request-type" name="request-type">
+      <option value="vacation">Vacation</option>
+      <option value="sick-leave">Sick Leave</option>
+      <option value="overtime">Overtime</option>
+    </select><br><br>
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date" name="start-date"><br><br>
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date" name="end-date"><br><br>
+    <input type="submit" value="Submit">
+  </form>
+  <table id="approval-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Request Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Approval Status</th>
+      </tr>
+    </thead>
+    <tbody id="approval-table-body">
+      <!-- Approval data -->
+    </tbody>
+  </table>
+</div>
+
+    </body>
+</html>

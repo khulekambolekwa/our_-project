@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+          .shift-table {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#shift-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#shift-table th, #shift-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+  #shift-table th {
+  background-color: #f0f0f0;
+}
+
+#shift-table-body tr:hover {
+  background-color: #ccc;
+}
+
+.shift-details {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#shift-details-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#shift-details-table th, #shift-details-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#shift-details-table th {
+  background-color: #f0f0f0;
+}
+
+#shift-details-table-body tr:hover {
+  background-color: #ccc;
+}
+.shift-status {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#shift-status-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#shift-status-table th, #shift-status-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#shift-status-table th {
+  background-color: #f0f0f0;
+}
+
+#shift-status-table-body tr:hover {
+  background-color: #ccc;
+}
+
+.shift-reminder {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#shift-reminder-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#shift-reminder-table th, #shift-reminder-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#shift-reminder-table th {
+  background-color: #f0f0f0;
+}
+
+#shift-reminder-table-body tr:hover {
+  background-color: #ccc;
+}
+ .prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+        </style>
+        <script>
+            const shiftTableBody = document.getElementById('shift-table-body');
+
+// Fetch shift data from server
+fetch('/shift-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(shift => {
+      const shiftHTML = `
+        <tr>
+          <td>${shift.employeeName}</td>
+          <td>${shift.shift}</td>
+        </tr>
+      `;
+      shiftTableBody.innerHTML += shiftHTML;
+    });
+  });
+
+const shiftDetailsTableBody = document.getElementById('shift-details-table-body');
+
+// Fetch shift details data from server
+fetch('/shift-details-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(shiftDetails => {
+      const shiftDetailsHTML = `
+        <tr>
+          <td>${shiftDetails.shiftID}</td>
+          <td>${shiftDetails.employeeName}</td>
+          <td>${shiftDetails.shiftDate}</td>
+          <td>${shiftDetails.shiftTime}</td>
+          <td>${shiftDetails.shiftType}</td>
+          <td>${shiftDetails.shiftStatus}</td>
+        </tr>
+      `;
+      shiftDetailsTableBody.innerHTML += shiftDetailsHTML;
+    });
+  });
+
+const shiftStatusTableBody = document.getElementById('shift-status-table-body');
+
+// Fetch shift status data from server
+fetch('/shift-status-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(shiftStatus => {
+      const shiftStatusHTML = `
+        <tr>
+          <td>${shiftStatus.shiftID}</td>
+          <td>${shiftStatus.employeeName}</td>
+          <td>${shiftStatus.shiftStatus}</td>
+        </tr>
+      `;
+      shiftStatusTableBody.innerHTML += shiftStatusHTML;
+    });
+  });
+const shiftReminderTableBody = document.getElementById('shift-reminder-table-body');
+
+// Fetch shift reminder data from server
+fetch('/shift-reminder-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(shiftReminder => {
+      const shiftReminderHTML = `
+        <tr>
+          <td>${shiftReminder.employeeName}</td>
+          <td>${shiftReminder.shiftDate}</td>
+          <td>${shiftReminder.shiftTime}</td>
+          <td>${shiftReminder.shiftReminder}</td>
+        </tr>
+      `;
+      shiftReminderTableBody.innerHTML += shiftReminderHTML;
+    });
+  });
+ 
+
+      </script>
+    </head>
+    <body>
+          <div class="navigation">
+                   <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile.html">Employee Profile</a></button>
+   <button class="next-btn"><a href="Personal information.html">Personal information</a></button>
+    <button class="next-btn"><a href="Professional information.html">Professional information</a></button>
+    <button class="next-btn"><a href="Education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts.html">Shifts</a></button>
+    <button class="next-btn"><a href="Attendance.html">Attendance</a></button>
+    <button class="next-btn"><a href="Leaves.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payrolls.html">Payslips</a></button>
+   <button class="next-btn"><a href="Dat sharing.html">Data Sharing</a></button>
+     <button class="next-btn"><a href="Security.html">Security</a></button>
+    
+
+  <h2>Shift Table</h2>
+  <table id="shift-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Shift</th>
+      </tr>
+    </thead>
+    <tbody id="shift-table-body">
+      <!-- Shift table data -->
+    </tbody>
+  </table>
+</div>
+
+<div class="shift-details">
+  <h2>Shift Details</h2>
+  <table id="shift-details-table">
+    <thead>
+      <tr>
+        <th>Shift ID</th>
+        <th>Employee Name</th>
+        <th>Shift Date</th>
+        <th>Shift Time</th>
+        <th>Shift Type</th>
+        <th>Shift Status</th>
+      </tr>
+    </thead>
+    <tbody id="shift-details-table-body">
+      <!-- Shift details data -->
+    </tbody>
+  </table>
+</div>
+<div class="shift-status">
+  <h2>Shift Status</h2>
+  <table id="shift-status-table">
+    <thead>
+      <tr>
+        <th>Shift ID</th>
+        <th>Employee Name</th>
+        <th>Shift Status</th>
+      </tr>
+    </thead>
+    <tbody id="shift-status-table-body">
+      <!-- Shift status data -->
+    </tbody>
+  </table>
+</div>
+  <div class="shift-reminder">
+  <h2>Shift Reminder</h2>
+  <table id="shift-reminder-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Shift Date</th>
+        <th>Shift Time</th>
+        <th>Shift Reminder</th>
+      </tr>
+    </thead>
+    <tbody id="shift-reminder-table-body">
+      <!-- Shift reminder data -->
+    </tbody>
+  </table>
+</div>
+      
+    </body>
+</html>

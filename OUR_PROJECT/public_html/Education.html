@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+    #education-section {
+  width: 50%;
+  float: left;
+}
+
+#documents-section {
+  width: 50%;
+  float: right;
+}
+
+#education-form {
+  margin-top: 20px;
+}
+
+#document-form {
+  margin-top: 20px;
+}
+
+#education-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#document-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+navigation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #3e8e41;
+}
+
+.page-container {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+}
+
+.page:not(.active) {
+  opacity: 0;
+}
+
+.active {
+  opacity: 1;
+}
+   body {
+  background-image: url('background image1.jpg');
+  background-size: cover;
+  background-position: center;
+}     
+        </style>
+        <script>
+      
+const educationForm = document.getElementById('education-form');
+const educationList = document.getElementById('education-list');
+
+educationForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const degree = document.getElementById('degree').value;
+  const institution = document.getElementById('institution').value;
+  const duration = document.getElementById('duration').value;
+  
+  const educationItem = document.createElement('li');
+  educationItem.innerHTML = `
+    <p>Degree: ${degree}</p>
+    <p>Institution: ${institution}</p>
+    <p>Duration: ${duration}</p>
+  `;
+  
+  educationList.appendChild(educationItem);
+});
+
+const documentForm = document.getElementById('document-form');
+const documentList = document.getElementById('document-list');
+
+documentForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const documentName = document.getElementById('document-name').value;
+  const documentFile = document.getElementById('document-file').files[0];
+  
+  const documentItem = document.createElement('li');
+  documentItem.innerHTML = `
+    <  
+    const prevBtn = document.querySelector('.prev-btn');
+const nextBtn = document.querySelector('.next-btn');
+const pages = document.querySelectorAll('.page');
+
+let currentPage = 0;
+
+prevBtn.addEventListener('click', () => {
+  currentPage--;
+  updatePage();
+});
+
+nextBtn.addEventListener('click', () => {
+  currentPage++;
+  updatePage();
+});
+
+function updatePage() {
+  pages.forEach((page, index) => {
+    if (index === currentPage) {
+      page.classList.add('active');
+    } else {
+      page.classList.remove('active');
+    }
+  });
+}
+        </script>
+    <body>
+          <div class="navigation">
+ 
+   <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile.html">Employee Profile</a></button>
+   <button class="next-btn"><a href="Personal information.html">Personal information</a></button>
+   <button class="next-btn"><a href="Professional information.html">Professional information</a></button>
+  <button class="next-btn"><a href="Education.html">Education</a></button>
+   <button class="next-btn"><a href="shifts.html">Shifts</a></button>
+    <button class="next-btn"><a href="Leaves.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payrolls.html">Payslips</a></button>
+      <button class="next-btn"><a href="Attendance.html">Attendance</a></button>
+   <button class="next-btn"><a href="Dat sharing.html">Data Sharing</a></button>
+    <button class="next-btn"><a href="Security.html">Security</a></button>
+</div>
+
+<div class="page-container">
+  <div class="page" id="leaves.hml">Page 1</div>
+  <div class="page" id="payslips.html">Page 2</div>
+  <div class="page" id="shifts.html">Page 3</div>
+</div>
+<div id="education-section">
+  <h2>Education</h2>
+  <form id="education-form">
+    <label for="degree">Degree:</label>
+    <input type="text" id="degree" name="degree"><br><br>
+    <label for="institution">Institution:</label>
+    <input type="text" id="institution" name="institution"><br><br>
+    <label for="duration">Duration:</label>
+    <input type="text" id="duration" name="duration"><br><br>
+    <button id="add-education-btn">Add Education</button>
+  </form>
+  <div id="education-list">
+  </div>
+</div><br><br>
+
+<div id="documents-section">
+  <h2>Documents</h2>
+  <form id="document-form">
+    <label for="document-name">Document Name:</label>
+    <input type="text" id="document-name" name="document-name"><br><br>
+    <label for="document-file">Document File:</label>
+    <input type="file" id="document-file" name="document-file"><br><br>
+    <button id="add-document-btn">Add Document</button>
+  </form>
+  <div id="document-list">
+  </div>
+</div>
+
+
+    </body>
+</html>

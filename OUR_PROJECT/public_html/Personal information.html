@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+          .employee-profile {
+  width: 50%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input, textarea {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+  
+ button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}  
+body {
+  background-image: url('background image1.jpg');
+  background-size: cover;
+  background-position: center;
+}
+        </style>
+        <script>
+            
+     const form = document.querySelector('form');
+const saveBtn = document.querySelector('#save-btn');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const name = document.querySelector('#name').value;
+  const email = document.querySelector('#email').value;
+  const phone = document.querySelector('#phone').value;
+  const address = document.querySelector('#address').value;
+  
+  // Logic to save personal information goes here
+});
+
+saveBtn.addEventListener('click', () => {
+  // Logic to save personal information goes here
+});
+   </script>
+    </head>
+    <body>
+              <div class="navigation">
+                   <button class="next-btn"><a href="index.html">EXIT</a></button>
+  <button class="prev-btn"><a href="Employee prrofile.html">Employee Profiles</a></button>
+  <button class="next-btn"><a href="Personal information.html">Personal information</a></button>
+   <button class="next-btn"><a href="Professional information.html">Professional information</a></button>
+  <button class="next-btn"><a href="Education.html">Education</a></button>
+   <button class="next-btn"><a href="shifts.html">Shifts</a></button>
+    <button class="next-btn"><a href="Leaves.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payrolls.html">Payslips</a></button>
+      <button class="next-btn"><a href="Attendance.html">Attendance</a></button>
+   <button class="next-btn"><a href="Dat sharing.html">Data Sharing</a></button>
+    <button class="next-btn"><a href="Security.html">Security</a></button>
+</div>
+
+   <div class="employee-profile">
+  <h2>Personal Information</h2>
+  <form>
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name"><br><br>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email"><br><br>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone"><br><br>
+    <label for="address">Address:</label>
+    <textarea id="address" name="address"></textarea><br><br>
+    <button id="save-btn">Save Changes</button>
+  </form>
+</div>
+
+
+    </body>
+</html>

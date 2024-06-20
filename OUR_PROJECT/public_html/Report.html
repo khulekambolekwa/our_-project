@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+           reports-analysis {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.reports-section {
+  margin-bottom: 20px;
+}
+
+#sales-report-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#sales-report-table th, #sales-report-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#sales-report-table th {
+  background-color: #f0f0f0;
+}
+#profit-analysis-chart {
+  width: 100%;
+  height: 300px;
+}
+.user-activity {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#activity-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#activity-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#activity-list li:last-child {
+  border-bottom: none;
+}
+   #education-section {
+  width: 50%;
+  float: left;
+}
+
+#documents-section {
+  width: 50%;
+  float: right;
+}
+
+#education-form {
+  margin-top: 20px;
+}
+
+#document-form {
+  margin-top: 20px;
+}
+
+#education-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#document-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+navigation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #3e8e41;
+}
+
+.page-container {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+}
+
+.page:not(.active) {
+  opacity: 0;
+}
+
+.active {
+  opacity: 1;
+}
+  .report-container {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.chart-container {
+  width: 50%;
+  height: 300px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+.image-container {
+  width: 50%;
+  height: 300px;
+  border: 1px solid #ccc;
+  padding: 20px;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} 
+
+
+.stats-container {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.stats-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+
+.stats-card h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.stats-card p {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+ 
+        </style>
+        <script>
+    JavaScript:
+
+const salesReportTableBody = document.getElementById('sales-report-table-body');
+const profitAnalysisChart = document.getElementById('profit-analysis-chart');
+
+// Fetch sales report data from server
+fetch('/sales-report-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(salesReport => {
+      const salesReportHTML = `
+        <tr>
+          <td>${salesReport.month}</td>
+          <td>${salesReport.sales}</td>
+        </tr>
+      `;
+      salesReportTableBody.innerHTML += salesReportHTML;
+    });
+  });
+
+const activityList = document.getElementById('activity-list');
+
+// Fetch user activity data from server
+fetch('/user-activity-data')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(activity => {
+      const activityListItem = document.createElement('LI');
+      activityListItem.textContent = ${activity.user} ${activity.action} ${activity.timestamp};
+      activityList.appendChild(activityListItem);
+    });
+  });
+
+// Fetch profit analysis data from server
+fetch('/profit-analysis-data')
+  .then(response => response.json())
+  .then(data => {
+   .then(data => {
+    const profitAnalysisChart_ctx = profitAnalysisChart.getContext('2d');
+    const profitAnalysisChart_data = {
+      labels: data.map(profitAnalysis => profitAnalysis.month),
+      datasets: [{
+        label: 'Profit',
+        data: data.map(profitAnalysis => profitAnalysis.profit),
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+      }]
+    };
+    const profitAnalysisChart_options = {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    };
+    const profitAnalysisChart = new Chart(profitAnalysisChart_ctx, {
+      type: 'bar',
+      data: profitAnalysisChart_data,
+      options: profitAnalysisChart_options
+    });
+     
+// Sales chart
+const salesChart = new Chart(document.getElementById('sales-chart'), {
+  type: 'bar',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    datasets: [{
+      label: 'Sales',
+      data: [100, 200, 300, 400, 500]
+    }]
+  },
+  options: {
+    title: 'Sales Chart'
+  }
+});
+
+// Promotions chart
+const promotionsChart = new Chart(document.getElementById('promotions-chart'), {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
+    datasets: [{
+      label: 'Promotions',
+      data: [10, 20, 30, 40, 50]
+    }]
+  },
+  options: {
+    title: 'Promotions Chart'
+  }
+});
+
+ // Update statistics dynamically
+const pageViews = 1000;
+const uniqueVisitors = 500;
+const bounceRate = 20;
+const averageSessionDuration = '3:45';
+
+document.getElementById('page-views').textContent = pageViews;
+document.getElementById('unique-visitors').textContent = uniqueVisitors;
+document.getElementById('bounce-rate').textContent = ${bounceRate}%;
+document.getElementById('average-session-duration').textContent = averageSessionDuration;
+
+
+        </script>
+    <body>
+        
+                  <div class="navigation">
+                                         <button class="next-btn"><a href="index.html">EXIT</a></button>
+  <button class="prev-btn"><a href="Employee prrofile.html">Employee profiles</a></button>
+  <button class="next-btn"><a href="Personal information.html">Personal information</a></button>
+   <button class="next-btn"><a href="Professional information.html">Professional information</a></button>
+  <button class="next-btn"><a href="Employee education.html">Education</a></button>
+   <button class="next-btn"><a href="shifts.html">Shifts</a></button>
+    <button class="next-btn"><a href="Leaves.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payroll employer.html">Payslips</a></button>
+      <button class="next-btn"><a href="Attendance.html">Attendance</a></button>
+   <button class="next-btn"><a href="Dat sharing.html">Data Sharing</a></button>
+    <button class="next-btn"><a href="Security.html">Security</a></button>
+    
+<div class="reports-analysis">
+  <h2>Reports and Analysis</h2>
+  <section class="reports-section"><br><br>
+    <h3>Sales Report</h3>
+    <table id="sales-report-table"><br><br>
+      <thead>
+        <tr>
+          <th>Month</th>
+          <th>Sales</th>
+        </tr>
+      </thead>
+      <tbody id="sales-report-table-body">
+        <!-- Sales report data -->
+      </tbody>
+    </table>
+  </section>
+  <section class="analysis-section">
+    <h3>Profit Analysis</h3>
+  <div class="report-container">
+      <img src="chart1.jpg" alt=""/>
+  </div> 
+  <h2>Sales Report</h2>
+  <div class="image-container">
+      <img src="graph1.jpg" alt=""/><br><br>
+  </div>
+  <h2>Promotions Report</h2>
+  <div class="image-container">
+      <img src="graph2.jpg" alt=""/>
+  </div>
+</div>
+  
+  <div class="stats-container">
+  <h2>User Activity Statistics</h2>
+  <div class="stats-card">
+    <h3>Page Views</h3>
+    <p id="page-views">1000</p>
+  </div>
+  <div class="stats-card">
+    <h3>Unique Visitors</h3>
+    <p id="unique-visitors">500</p>
+  </div>
+  <div class="stats-card">
+    <h3>Bounce Rate</h3>
+    <p id="bounce-rate">20%</p>
+  </div>
+  <div class="stats-card">
+    <h3>Average Session Duration</h3>
+    <p id="average-session-duration">3:45</p>
+  </div>
+</div>
+  
+
+    </body>
+</html>

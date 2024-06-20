@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+           .leave-page {
+  width: 50%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+label {
+  margin-bottom: 10px;
+}
+
+input, select {
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px 20px;
+   border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3e8e41;
+}
+
+.leave-records {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#leave-records-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#leave-records-table th, #leave-records-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#leave-records-table th {
+  background-color: #f0f0f0;
+}
+.leave-calendar {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#leave-calendar-table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#leave-calendar-table th, #leave-calendar-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+#leave-calendar-table th {
+  background-color: #f0f0f0;
+}
+
+.leave-day {
+  background-color: #fff;
+  color: #000;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.leave-day:hover {
+  background-color: #ccc;
+}
+
+.leave-day.selected {
+  background-color: #007bff;
+  color: #fff;
+}
+ .prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+        </style>
+        <script>
+  const form = document.querySelector('form');
+const submitBtn = document.querySelector('#submit-btn');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const employeeName = document.querySelector('#employee-name').value;
+  const leaveType = document.querySelector('#leave-type').value;
+  const startDate = document.querySelector('#start-date').value;
+  const endDate = document.querySelector('#end-date').value;
+  const numberOfDays = document.querySelector('#number-of-days').value;
+  
+  // Logic to submit leave request goes here
+});
+
+submitBtn.addEventListener('click', () => {
+  // Logic to submit leave request goes here
+});
+ const leaveRecordsTable = document.getElementById('leave-records-table');
+const leaveRecordsList = document.getElementById('leave-records-list');
+
+// Fetch leave records data from server
+fetch('/leave-records')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(leaveRecord => {
+      const leaveRecordHTML = `
+        <tr>
+          <td>${leaveRecord.employeeName}</td>
+          <td>${leaveRecord.leaveType}</td>
+          <td>${leaveRecord.startDate}</td>
+          <td>${leaveRecord.endDate}</td>
+          <td>${leaveRecord.numberOfDays}</td>
+          <td>${leaveRecord.leaveBalance}</td>
+        </tr>
+      `;
+      leaveRecordsList.innerHTML += leaveRecordHTML;
+    });
+  });
+  const leaveCalendarTable = document.getElementById('leave-calendar-table');
+const leaveCalendarDays = document.getElementById('leave-calendar-days');
+
+// Fetch leave calendar data from server
+fetch('/leave-calendar')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(leaveDay => {
+      const leaveDayHTML = `
+        <td class="leave-day ${leaveDay.status}">${leaveDay.date}</td>
+      `;
+      leaveCalendarDays.innerHTML += leaveDayHTML;
+    });
+  });
+
+// Add event listener to leave days
+leaveCalendarDays.addEventListener('click', (e) => {
+  const leaveDay = e.target.closest('.leave-day');
+  if (leaveDay) {
+    // Toggle selected class
+    leaveDay.classList.toggle('selected');
+      }
+});
+
+        </script>
+    </head>
+    <body>
+        
+                         <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile 2.html">Employee Profile</a></button>
+   <button class="next-btn"><a href="Personal information 2.html">Personal information</a></button>
+    <button class="next-btn"><a href="Professional information 2.html">Professional information</a></button>
+    <button class="next-btn"><a href="Employee education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts 2.html">Shifts</a></button>
+    <button class="next-btn"><a href="Attendance2.html">Attendance</a></button>
+    <button class="next-btn"><a href="Leaves 2.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payroll employer.html">Payslips</a></button>
+   <button class="next-btn"><a href="Dat sharing 2.html">Data Sharing</a></button>
+     <button class="next-btn"><a href="Security 2.html">Security</a></button>
+
+     <div class="leave-page">
+  <h2>Leave Request</h2>
+  <form>
+    <label for="employee-name">Employee Name:</label>
+    <input type="text" id="employee-name" name="employee-name"><br><br>
+    <label for="leave-type">Leave Type:</label>
+    <select id="leave-type" name="leave-type">
+      <option value="annual">Annual Leave</option>
+      <option value="sick">Sick Leave</option>
+      <option value="family">Family Leave</option>
+    </select><br><br>
+    <label for="start-date">Start Date:</label>
+    <input type="date" id="start-date" name="start-date"><br><br>
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date" name="end-date"><br><br>
+    <label for="number-of-days">Number of Days:</label>
+    <input type="number" id="number-of-days" name="number-of-days"><br><br>
+    <button id="submit-btn">Submit Request</button>
+  </form>
+</div>
+   <div class="leave-records">
+  <h2>Leave Records</h2>
+  <table id="leave-records-table">
+    <thead>
+      <tr>
+        <th>Employee Name</th>
+        <th>Leave Type</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Number of Days</th>
+        <th>Leave Balance</th>
+      </tr>
+    </thead>
+    <tbody id="leave-records-list">
+      <!-- Leave records list items -->
+    </tbody>
+  </table>
+</div>
+<div class="leave-calendar">
+  <h2>Leave Calendar</h2>
+  <table id="leave-calendar-table">
+    <thead>
+      <tr>
+        <th>Sunday</th>
+        <th>Monday</th>
+        <th>Tuesday</th>
+        <th>Wednesday</th>
+        <th>Thursday</th>
+        <th>Friday</th>
+        <th>Saturday</th>
+      </tr>
+    </thead>
+    <tbody id="leave-calendar-days">
+      <!-- Leave calendar days list items -->
+    </tbody>
+  </table>
+</div>
+
+
+    </body>
+</html>
+ 

@@ -1,0 +1,272 @@
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+      .employee-profiles {
+  width: 80%;
+  margin: 40px auto;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profile {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.profile img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin: 10px;
+}
+ .profile h3 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.profile p {
+  margin-bottom: 20px;
+}
+  .employee-profile {
+  width: 200px;
+  height: 200px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.employee-profile:hover {
+  background-color: #ccc;
+}
+#add-employee-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#add-employee-form label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+#add-employee-form input[type="text"], input[type="email"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+#add-employee-form button[type="submit"] {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#employee-table {
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+}
+
+#employee-table th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+#employee-table th {
+  background-color: #f0f0f0;
+}
+#employee-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#employee-list tr {
+  border-bottom: 1px solid #ccc;
+}
+
+#employee-list tr:hover {
+  background-color: #f0f0f0;
+}
+
+.edit-button, .delete-button {
+  border: none;
+  padding: 5px 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #333;
+  color: #fff;
+}
+.delete-button {
+  background-color: #red;
+  color: #fff;
+}
+navigation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #3e8e41;
+}
+
+.page-container {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+}
+
+.page:not(.active) {
+  opacity: 0;
+}
+
+.active {
+  opacity: 1;
+}
+        </style>
+        <script>
+    const profileContainer = document.querySelector('.profile-container');
+
+// Add event listener to each profile
+profileContainer.addEventListener('click', (e) => {
+  const profile = e.target.closest('.profile');
+  if (profile) {
+    // Show profile details
+    const details = profile.querySelector('.details');
+    details.style.display = 'block';
+  }
+});
+ function openProfile() {
+  window.location.href = "profile-details.html";
+}
+       
+        </script>
+    </head>
+    <body>
+             <div class="navigation">
+                   <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile 2.html">Employee Profile</a></button>
+   <button class="next-btn"><a href="Personal information 2.html">Personal information</a></button>
+    <button class="next-btn"><a href="Professional information 2.html">Professional information</a></button>
+    <button class="next-btn"><a href="Employee education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts 2.html">Shifts</a></button>
+    <button class="next-btn"><a href="Attendance2.html">Attendance</a></button>
+    <button class="next-btn"><a href="Leaves 2.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payroll employer.html">Payslips</a></button>
+   <button class="next-btn"><a href="Dat sharing 2.html">Data Sharing</a></button>
+     <button class="next-btn"><a href="Security 2.html">Security</a></button>
+   
+        <div class="employee-profiles">
+  <h2>Employee Profiles</h2>
+  <div class="profile-container">
+    <div class="profile">
+      <img src="employee1.jpg" alt="Employee 1">
+      <h3>Khodiso Tsaoi</h3>
+      <p>CEO</p>
+      <p>khodiso.tsaoi@gmail.com</p>
+      <p>(086) 456-7890</p>
+    </div>
+    <div class="profile">
+        <img src="nelly.jpg"   alt="Employee 2" >
+      <h3>Sanelisekile Nhlapo</h3>
+      <p>Manager</p>
+      <p>sanelisekile.nhlapo@gmail.com</p>
+      <p>(076) 654-3210</p>
+    </div>
+    <!-- Add more employee profiles here -->
+     <div class="profile">
+      <img src="../../../OneDrive/Pictures/IMG-20220904-WA0001 (3).jpg"alt="Employee 2" >
+      <h3>Thlogofatso Maja</h3>
+      <p>Supervisor</p>
+      <p>thlogi.maja@gmail.com</p>
+      <p>(082) 654-5432</p>
+    </div>
+      <div class="profile">
+      <img src="../../../OneDrive/Pictures/IMG-20220904-WA0001 (3).jpg"alt="Employee 2" >
+      <h3>Primrose Mohale</h3>
+      <p>Admin</p>
+      <p>primrose.mohale@gmail.com</p>
+      <p>(061) 655-5999</p>
+    </div>
+      <div class="profile">
+      <img src="../../../OneDrive/Pictures/IMG-20220904-WA0001 (3).jpg"alt="Employee 2" >
+      <h3>Khuleka Mbolekwa</h3>
+      <p>Marketing</p>
+      <p>khuleka.mbolekwa@gmail.com</p>
+      <p>(067) 664-3210</p>
+    </div>
+      <div class="profile">
+      <img src="../../../OneDrive/Pictures/IMG-20220904-WA0001 (3).jpg"alt="Employee 2" >
+      <h3>Queen Moloto</h3>
+      <p>Public Management</p>
+      <p>queen.moloto@mail.com</p>
+      <p>(076) 253-3065</p>
+    </div>
+      <div class="profile">
+      <img src="../../../OneDrive/Pictures/IMG-20220904-WA0001 (3).jpg"alt="Employee 2" >
+      <h3>Jane Den</h3>
+      <p> HR</p>
+      <p>jane.den@gmail.com</p>
+      <p>(073) 964-3439</p>
+    </div>
+     <div class="profile">
+      <img src="../../../OneDrive/Pictures/IMG-20220904-WA0001 (3).jpg"alt="Employee 2" >
+      <h3>Asnath Ndlovu</h3>
+      <p>Finance</p>
+      <p>asnath.ndlovu@gmail.com</p>
+      <p>(067) 094-3210</p>
+    </div>
+  
+
+    </body>
+</html>

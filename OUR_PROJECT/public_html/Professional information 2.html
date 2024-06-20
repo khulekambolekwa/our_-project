@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+            .prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+#professional-info {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-section {
+  margin-bottom: 20px;
+}
+
+.info-section label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.info-section input[type="text"], input[type="number"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+#add-experience-btn {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+ border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#experience-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#experience-list li {
+  margin-bottom: 20px;
+}
+
+        </style>
+       
+            
+    <body>
+  
+         <div class="navigation">
+                   <button class="next-btn"><a href="index.html">EXIT</a></button> 
+  <button class="prev-btn"><a href="Employee prrofile.html">Employee Profile</a></button>
+   <button class="next-btn"><a href="Personal information 2.html">Personal information</a></button>
+    <button class="next-btn"><a href="Professional information 2.html">Professional information</a></button>
+    <button class="next-btn"><a href="Employee education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts 2.html">Shifts</a></button>
+    <button class="next-btn"><a href="Attendance 2.html">Attendance</a></button>
+    <button class="next-btn"><a href="Leaves 2.html">Leaves</a></button>
+     <button class="next-btn"><a href="Payroll employer.html">Payslips</a></button>
+   <button class="next-btn"><a href="Dat sharing 2.html">Data Sharing</a></button>
+     <button class="next-btn"><a href="Security 2.html">Security</a></button>
+     
+     
+     
+     <div id="professional-info">
+  <h2>Professional Information</h2>
+  <div class="info-section">
+    <label for="job-title">Job Title:</label>
+    <input type="text" id="job-title" name="job-title"><br><br>
+  </div>
+  <div class="info-section">
+    <label for="company">Company:</label>
+    <input type="text" id="company" name="company"><br><br>
+  </div>
+  <div class="info-section">
+    <label for="industry">Industry:</label>
+    <input type="text" id="industry" name="industry"><br><br>
+  </div>
+  <div class="info-section">
+    <label for="experience">Experience:</label>
+    <input type="number" id="experience" name="experience"><br><br>
+  </div>
+  <button id="add-experience-btn">Add Experience</button>
+  <div id="experience-list">
+  </div>
+</div>
+
+   
+    </body>
+</html>

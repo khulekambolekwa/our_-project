@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <style>
+
+.payroll-faq-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+.payroll-faq-question {
+  margin-bottom: 20px;
+}
+
+.payroll-faq-answer {
+  font-size: 18px;
+  color: #666;
+}
+
+.payroll-faq-more {
+  text-align: center;
+  font-size: 18px;
+  color: #666;
+  cursor: pointer;
+}
+
+.payroll-history, .payroll-notification, .payroll-calendar, .payroll-faq, .tax-statement {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#payroll-history-list, #payroll-faq-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+} 
+
+#payroll-history-list li, #payroll-faq-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+#payroll-history-list li:last-child, #payroll-faq-list li:last-child {
+  border-bottom: none;
+}
+
+
+.payroll-calendar-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9f9f9;
+}
+
+.payroll-calendar-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.payroll-calendar-content {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #f0f0f0;
+}
+
+   #education-section {
+  width: 50%;
+  float: left;
+}
+
+#documents-section {
+  width: 50%;
+  float: right;
+}
+
+#education-form {
+  margin-top: 20px;
+}
+
+#document-form {
+  margin-top: 20px;
+}
+
+#education-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#document-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+navigation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.prev-btn, .next-btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #3e8e41;
+}
+
+.page-container {
+  position: relative;
+}
+
+.page {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 0.5s;
+}
+
+.page:not(.active) {
+  opacity: 0;
+}
+
+.active {
+  opacity: 1;
+}
+   
+
+        </style>
+        <script>
+            
+const payrollHistoryList = document.getElementById('payroll-history-list');
+const payrollNotificationMessage = document.getElementById('payroll-notification-message');
+const payrollCalendarTable = document.getElementById('payroll-calendar-table');
+const payrollFaqList = document.getElementById('payroll-faq-list');
+const taxStatementMessage = document.getElementById('tax-statement-message');
+
+// Fetch payroll history data from server
+fetch('/payroll-history')
+  .then(response => response.json())
+  .then(data => {
+    data.forEach(payrollHistory => {
+      const payrollHistoryHTML = `
+        <li>
+          <span>${payrollHistory.date}</span>
+          <span>${payrollHistory.amount}</span>
+          <span>${payrollHistory.status}</span>
+        </li>
+        </li>
+      `;
+      payrollHistoryList.innerHTML += payrollHistoryHTML;
+    });
+  });
+
+
+
+
+const payrollCalendarContainer = document.querySelector('.payroll-calendar-container');
+const payrollCalendarContent = document.querySelector('.payroll-calendar-content');
+
+payrollCalendarContainer.addEventListener('click', () => {
+  payrollCalendarContent.classList.toggle('show');
+});
+
+const payrollFaqMore = document.querySelector('.payroll-faq-more');
+
+payrollFaqMore.addEventListener('dblclick', () => {
+  window.location.href = 'payroll-faq-more.html';
+});
+
+
+
+        </script>
+    </head>
+    <body>
+                    <div class="navigation">
+                          <button class="next-btn"><a href="index.html">EXIT</a></button>
+  <button class="prev-btn"><a href="Employee prrofile 2.html">Employee profiles</a></button>
+  <button class="next-btn"><a href="Personal information 2.html">Personal information</a></button>
+   <button class="next-btn"><a href="Professional information 2.html">Professional information</a></button>
+  <button class="next-btn"><a href="Employee education.html">Education</a></button>
+   <button class="next-btn"><a href="Shifts 2.html">Shifts</a></button>
+    <button class="next-btn"><a href="Attendance2.html">Attendance</a></button>
+     <button class="next-btn"><a href="Leaves 2.html">Leaves</a></button>
+      <button class="next-btn"><a href="Payroll employer.html">Payslips</a></button>
+   <button class="next-btn"><a href="Dat sharing 2.html">Data Sharing</a></button>
+    <button class="next-btn"><a href="Security 2.html">Security</a></button>
+    <button class="next-btn"><a href="Report.html">Report</a></button>
+    
+    <img src="../../sun africa2/public_html/Payslip.jpg" alt=""/>
+  <div class="payroll-calendar-container">
+  <div class="payroll-calendar-header">
+    <h2>Payroll Calendar</h2>
+  </div>
+  <div class="payroll-calendar-content">
+    <table>
+      <thead>
+        <tr>
+            <th>Employee Name</th> 
+          <th>Date</th>
+          <th>Pay Period</th>
+          <th>Pay Date</th>
+          
+        </tr>
+      </thead>
+      <tbody id="payroll-calendar-data">
+        <!-- data will be inserted here -->
+      <table border="1">
+          <thead>
+              <tr>
+                  <th>Promise Lethoba</th>
+                  <th>30/01/2023</th>
+                  <th>Monthly</th>
+                  <th>01/02/2023</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr>
+                  <td>Khodiso Tsoai</td>
+                  <td>30/01/2023</td>
+                  <td>Monthly</td>
+                  <td>01/02/2023</td>
+              </tr>
+              <tr>
+                  <td>Letlhogonolo Motswaedi</td>
+                  <td>30/01/2023</td>
+                  <td>Monthly</td>
+                  <td>01/02/2023</td>
+              </tr>
+              <tr>
+                  <td>Sanelisiwe Nhlapo</td>
+                  <td>30/01/2023</td>
+                  <td>Monthly</td>
+                  <td>01/02/2023</td>
+              </tr>
+              <tr>
+                  <td>khuleka Mbolekwa </td>
+                  <td>30/01/2023</td>
+                  <td>Monthly</td>
+                  <td>01/02/2023</td>
+              </tr>
+                   <tr>
+                  <td>Moliehi Mzamani </td>
+                  <td>30/01/2023</td>
+                  <td>Monthly</td>
+                  <td>01/02/2023</td>
+              </tr>
+          </tbody>
+      </table>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+  <div class="tax-statement">
+    <h3>Tax Statement</h3>
+    <img src="Tax statement.jpg" alt="" width="500" height="500"/>
+    <p>Tsoai Khodiso</p>
+  </div>
+</div>
+       <img src="Tax statement.jpg" alt="" width="500" height="500"/>
+    <p>Moliehi Mzamane</p>
+  </div>
+</div>
+
+   <img src="Tax statement.jpg" alt="" width="500" height="500"/>
+    <p>Sanelisiwe Nhlapo</p>
+  </div>
+</div>
+   <img src="Tax statement.jpg" alt="" width="500" height="500"/>
+    <p>Lethlogonolo Motswaedi</p>
+  </div>
+</div>
+   <img src="Tax statement.jpg" alt="" width="500" height="500"/>
+    <p>Promise Lethoba</p>
+  </div>
+</div>
+   <img src="Tax statement.jpg" alt="" width="500" height="500"/>
+    <p>Khuleka Mbolelwa</p>
+  </div>
+</div>
+
+<div class="payroll-faq-container">
+  <h2>Payroll FAQ</h2>
+  <div class="payroll-faq-question">
+    <p>What is the pay period?</p>
+    <p class="payroll-faq-answer">The pay period is the period of time during which an employee works and earns wages.</p>
+  </div>
+  <div class="payroll-faq-question">
+    <p>When is payday?</p>
+    <p class="payroll-faq-answer">Payday is on the 15th and 30th of each month.</p>
+  </div>
+  <!-- Add more FAQ questions and answers here -->
+  <div class="payroll-faq-more">
+    <p>Double tap to see more FAQs</p>
+  </div>
+</div>
+    </body>
+</html>
